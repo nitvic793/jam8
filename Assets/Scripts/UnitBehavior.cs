@@ -16,10 +16,11 @@ public class UnitBehavior : MonoBehaviour {
     NavMeshAgent navMesh;
 
     UnitStates CurrentState;
+    UnitStates PreviousState;
 
-	void Start () {
+    void Start () {
         navMesh = GetComponent<NavMeshAgent>();
-        CurrentState = UnitStates.GO_TO_NEXT_BASE;
+        CurrentState = PreviousState = UnitStates.GO_TO_NEXT_BASE;
 	}
 	
 	void Update () {
@@ -27,6 +28,10 @@ public class UnitBehavior : MonoBehaviour {
         {
             case UnitStates.GO_TO_NEXT_BASE:
                 GotoDestination(GetNextBasePosition());
+                break;
+            case UnitStates.GUARD:
+                var guardPos = GetClosestGuardPosition();
+                GotoDestination(guardPos);
                 break;
             default:
                 break;
@@ -36,6 +41,11 @@ public class UnitBehavior : MonoBehaviour {
     Vector3 GetNextBasePosition()
     {
         return GameObject.Find("Cube").transform.position;
+    }
+
+    Vector3 GetClosestGuardPosition()
+    {
+        return GameObject.Find("BaseMiddle").transform.position; 
     }
 
     void GotoDestination(Vector3 position)
