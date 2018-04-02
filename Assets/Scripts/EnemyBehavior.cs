@@ -24,11 +24,12 @@ public class EnemyBehavior : MonoBehaviour
     bool isIdle = true;
     bool isDead = false;
 
+    float deathDelay = 0F;
     float attackCycleTime = 0F;
 
     public float Health = 100F;
-    public float attackDistance = 1F;
-
+    public float attackDistance = 10F;
+    public float attackPoints = 12F;
     void Start()
     {
         navMesh = GetComponent<NavMeshAgent>();
@@ -38,7 +39,7 @@ public class EnemyBehavior : MonoBehaviour
 
     void Update()
     {
-        UpdateAnimation();
+        UpdateLogic();
         navMesh.isStopped = true;
         switch (CurrentState)
         {
@@ -52,26 +53,49 @@ public class EnemyBehavior : MonoBehaviour
                 {
                     GoTowardsUnit(pos);
                 }
+
                 break;
-            case EnemyStates.ATTACK:
-             
+            case EnemyStates.ATTACK:             
                 var unit = GetClosestUnit();
                 if (Vector3.Distance(transform.position, unit.transform.position) > attackDistance)
                 {
                     CurrentState = EnemyStates.PURSUE;
                 }
                 attackCycleTime += Time.deltaTime;
-                if (attackCycleTime > 0.4F)
+                if (attackCycleTime > 0.8F)
                 {
                     attackCycleTime = 0F;
-                    //Attack
+                    unit.InflictDamage(attackPoints);//Attack
                 }
+
                 break;
             case EnemyStates.DIE:
-
+                if(deathDelay>1F)
+                {
+                    gameObject.SetActive(false);
+                }
+                deathDelay += Time.deltaTime;
+                break;
             default:
                 break;
         }
+
+        UpdateAnimation();
+    }
+
+    void UpdateLogic()
+    {
+        if (Health<=0)
+        {
+            isDead = true;
+            CurrentState = EnemyStates.DIE;
+        }
+    }
+
+    public void InflictDamage(float amount)
+    {
+        Health -= amount;
+        if (Health <= 0) Health = 0F;
     }
 
     void UpdateAnimation()

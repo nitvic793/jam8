@@ -2072,6 +2072,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a9b82e1c05fc744981f18992961349a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: 100
+  attackDistance: 3
+  attackPoints: 12
 --- !u!137 &137945545711473420
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

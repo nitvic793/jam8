@@ -20,6 +20,7 @@ public class UnitBehavior : MonoBehaviour
     public float baseDistanceOffset = 3F;
     public float Health = 100F;
     public float attackVisionDistance = 20F;
+    public float attackPoints = 9F;
 
     UnitStates CurrentState;
     UnitStates PreviousState;
@@ -31,6 +32,7 @@ public class UnitBehavior : MonoBehaviour
 
     bool isMoving = false;
     float attackCycleTime = 0F;
+    float deathDelay = 0F;
 
     void Start()
     {
@@ -41,7 +43,7 @@ public class UnitBehavior : MonoBehaviour
 
     void Update()
     {
-        UpdateAnimation();
+        UpdateLogic();
         navMesh.isStopped = true;
         switch (CurrentState)
         {
@@ -70,24 +72,46 @@ public class UnitBehavior : MonoBehaviour
                     CurrentState = PreviousState;
                     break;
                 }
-                
+
                 transform.LookAt(enemy.transform);
-                if (attackCycleTime > 0.4F)
+                if (attackCycleTime > 0.8F)
                 {
                     attackCycleTime = 0F;
                     var pos = transform.position;
                     pos.y += 2;
                     pos = pos + transform.forward * 1;
-                    var flash = Instantiate(muzzleFlash, pos, transform.rotation);
                     
-                    //Attack
+                    var flash = Instantiate(muzzleFlash, pos, Quaternion.LookRotation(transform.forward));
+                    enemy.InflictDamage(attackPoints);//Attack
                 }
                 break;
             case UnitStates.DIE:
+                if (deathDelay > 1F)
+                {
+                    gameObject.SetActive(false);
+                }
+                deathDelay += Time.deltaTime;
                 break;
             default:
                 break;
         }
+
+        UpdateAnimation();
+    }
+
+    void UpdateLogic()
+    {
+        if (Health <= 0)
+        {
+            isDead = true;
+            CurrentState = UnitStates.DIE;
+        }
+    }
+
+    public void InflictDamage(float amount)
+    {
+        Health -= amount;
+        if (Health <= 0) Health = 0F;
     }
 
     void UpdateAnimation()

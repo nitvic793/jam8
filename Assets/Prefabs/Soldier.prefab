@@ -1074,10 +1074,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cdd05e302bad2146a3f45e74efa5c80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  muzzleFlash: {fileID: 100006, guid: 30b4cc2728d8cec499fad63ba93785a4, type: 2}
+  muzzleFlash: {fileID: 100000, guid: 8eaaa4f553116f44b8459bc24201c514, type: 2}
   baseDistanceOffset: 3
   Health: 100
   attackVisionDistance: 10
+  attackPoints: 9
 --- !u!136 &136620686025574556
 CapsuleCollider:
   m_ObjectHideFlags: 1
