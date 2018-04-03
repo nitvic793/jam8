@@ -41,6 +41,12 @@ public class UI : MonoBehaviour {
         UpdateToolPointsText();
     }
 
+    private void OnGUI()
+    {
+        UpdateResourcePointsText();
+        UpdateToolPointsText();
+    }
+
     public void UpdateResourcePointsText()
     {
         resourcePointsText.text = Resources.sharedInstance.ResourcePoints.ToString() + " Resource Points";
@@ -72,7 +78,20 @@ public class UI : MonoBehaviour {
 
     public void MoveBaseButton()
     {
-        SetPathButtonsActive(!pathButtonsActive);
+        var u = FindObjectOfType<UnitBehavior>();
+        var bases = u.bases;
+        var b = bases[u.currentBase];
+
+        //SetPathButtonsActive(!pathButtonsActive);
+        if(b.isBaseClear)
+        {
+            var units = FindObjectsOfType<UnitBehavior>();
+            foreach (var unit in units)
+            {
+                unit.currentBase++;
+                unit.CurrentState = UnitStates.GO_TO_NEXT_BASE;
+            }
+        }     
     }
 
     public void GuardSpotButton()

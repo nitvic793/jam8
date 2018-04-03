@@ -15,7 +15,7 @@ public class Tower : MonoBehaviour {
     }
 	// Use this for initialization
 	void Start () {
-        GameObject obj = Instantiate(fillBarPrefab, transform.position + 1.0f * Vector3.up, Quaternion.identity) as GameObject;
+        GameObject obj = Instantiate(fillBarPrefab, transform.position + 7.0f * Vector3.up, Quaternion.identity) as GameObject;
         fillBar = obj.GetComponent<FillBar>();
 
         StartCoroutine(Run());

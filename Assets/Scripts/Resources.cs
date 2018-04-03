@@ -69,7 +69,10 @@ public class Resources : MonoBehaviour {
             {
                 if (hit.collider.gameObject.tag == "Ground")
                 {
-                    Instantiate(wallPrefab, hit.point, Quaternion.identity);
+                    var colliderRotation = hit.collider.transform.rotation;
+                    var rotation = new Vector3(-90, 0, 90) + colliderRotation.eulerAngles;
+                    rotation.x = -90;
+                    Instantiate(wallPrefab, hit.point, Quaternion.Euler(rotation));
                     toolPoints -= 20;
                     resourcePoints -= 10;
                 }
@@ -82,12 +85,14 @@ public class Resources : MonoBehaviour {
             {
                 if (hit.collider.gameObject.tag == "Ground")
                 {
-                    Instantiate(towerPrefab, hit.point, Quaternion.identity);
+                    var colliderRotation = hit.collider.transform.rotation;
+                    var rotation = colliderRotation.eulerAngles;
+                    rotation.x = -90;
+                    Instantiate(towerPrefab, hit.point, Quaternion.Euler(rotation));
                     toolPoints -= 10;
                     resourcePoints -= 30;
                 }
             }
         }
-
     }
 }

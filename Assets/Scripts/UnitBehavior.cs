@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-enum UnitStates
+public enum UnitStates
 {
     GO_TO_NEXT_BASE,
     GUARD,
     ATTACK,
-    DIE
+    DIE,
+    IDLE
 };
 
 public class UnitBehavior : MonoBehaviour
@@ -17,12 +18,19 @@ public class UnitBehavior : MonoBehaviour
     NavMeshAgent navMesh;
 
     public GameObject muzzleFlash;
-    public float baseDistanceOffset = 3F;
+    public float baseDistanceOffset = 15F;
+    public float guardDistanceOffset = 3F;
     public float Health = 100F;
     public float attackVisionDistance = 20F;
     public float attackPoints = 9F;
+    public int currentBase = 0;
+    public Vector3 guardPosition;
+    public GameObject nextBase;
+    public GameObject pathToBase;
 
-    UnitStates CurrentState;
+    public List<BaseController> bases;
+
+    public UnitStates CurrentState;
     UnitStates PreviousState;
 
     bool isIdle = true;
@@ -38,22 +46,35 @@ public class UnitBehavior : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         navMesh = GetComponent<NavMeshAgent>();
-        CurrentState = PreviousState = UnitStates.GUARD;
+        CurrentState = PreviousState = UnitStates.GO_TO_NEXT_BASE;
     }
 
     void Update()
     {
-        UpdateLogic();
         navMesh.isStopped = true;
+        UpdateLogic();
         switch (CurrentState)
         {
             case UnitStates.GO_TO_NEXT_BASE:
-                GotoDestination(GetNextBasePosition());
-                AttackEnemyIfClose();
+                var nextBasePos = GetNextBasePosition();
+                var isEnemyClose = AttackEnemyIfClose();
+                if (Vector3.Distance(transform.position, nextBasePos) > baseDistanceOffset && !isEnemyClose)
+                {
+                    isMoving = true;
+                    GotoDestination(nextBasePos);
+                }
+                else
+                {
+                    isMoving = false;
+                    if(!isEnemyClose)
+                    {
+                        bases[currentBase].isCurrentBase = true;
+                    }
+                }
                 break;
             case UnitStates.GUARD:
                 var guardPos = GetClosestGuardPosition();
-                var isEnemyClose = AttackEnemyIfClose();
+                isEnemyClose = AttackEnemyIfClose();
                 if (Vector3.Distance(transform.position, guardPos) > baseDistanceOffset && !isEnemyClose)
                 {
                     isMoving = true;
@@ -123,7 +144,8 @@ public class UnitBehavior : MonoBehaviour
         switch (CurrentState)
         {
             case UnitStates.GO_TO_NEXT_BASE:
-                isRunning = true;
+                isRunning = isMoving;
+                isIdle = !isMoving;
                 break;
             case UnitStates.ATTACK:
                 isAttacking = true;
@@ -178,12 +200,13 @@ public class UnitBehavior : MonoBehaviour
 
     Vector3 GetNextBasePosition()
     {
-        return GameObject.Find("Cube").transform.position;
+        var baseStation = bases[currentBase];
+        return baseStation.transform.position;
     }
 
     Vector3 GetClosestGuardPosition()
     {
-        return GameObject.Find("BaseMiddle").transform.position;
+        return guardPosition;
     }
 
     void GotoDestination(Vector3 position)

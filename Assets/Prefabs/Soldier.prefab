@@ -1077,8 +1077,12 @@ MonoBehaviour:
   muzzleFlash: {fileID: 100000, guid: 8eaaa4f553116f44b8459bc24201c514, type: 2}
   baseDistanceOffset: 3
   Health: 100
-  attackVisionDistance: 10
+  attackVisionDistance: 15
   attackPoints: 9
+  guardPosition: {fileID: 0}
+  nextBase: {fileID: 0}
+  pathToBase: {fileID: 0}
+  bases: []
 --- !u!136 &136620686025574556
 CapsuleCollider:
   m_ObjectHideFlags: 1
