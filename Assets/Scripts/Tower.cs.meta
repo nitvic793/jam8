@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: c7ac102c61ce27644b144f231070652e
+timeCreated: 1522721158
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - fillBarPrefab: {fileID: 1563053062433282, guid: ec2e368d2040afc4bbd8c91a38f29255,
+      type: 2}
+  - fillBar: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
