@@ -7,7 +7,8 @@ enum EnemyStates
 {
     PURSUE,
     ATTACK,
-    DIE
+    DIE,
+    IDLE
 }
 
 public class EnemyBehavior : MonoBehaviour
@@ -44,9 +45,17 @@ public class EnemyBehavior : MonoBehaviour
         switch (CurrentState)
         {
             case EnemyStates.PURSUE:
-                var pos = GetClosestUnitPosition();
+                var closeUnit = GetClosestUnit();
+                if(closeUnit==null)
+                {
+                    CurrentState = EnemyStates.IDLE;
+                    break;
+                }
+
+                var pos = closeUnit.transform.position;
                 if (Vector3.Distance(transform.position, pos) < attackDistance)
                 {
+                    PreviousState = CurrentState;
                     CurrentState = EnemyStates.ATTACK;
                 }
                 else
@@ -57,6 +66,12 @@ public class EnemyBehavior : MonoBehaviour
                 break;
             case EnemyStates.ATTACK:             
                 var unit = GetClosestUnit();
+                if(unit==null)
+                {
+                    CurrentState = PreviousState;
+                    break;
+                }
+
                 if (Vector3.Distance(transform.position, unit.transform.position) > attackDistance)
                 {
                     CurrentState = EnemyStates.PURSUE;
@@ -74,6 +89,7 @@ public class EnemyBehavior : MonoBehaviour
                 {
                     gameObject.SetActive(false);
                 }
+
                 deathDelay += Time.deltaTime;
                 break;
             default:
@@ -115,6 +131,7 @@ public class EnemyBehavior : MonoBehaviour
             case EnemyStates.DIE:
                 isDead = true;
                 break;
+            case EnemyStates.IDLE:
             default:
                 isIdle = true;
                 break;
