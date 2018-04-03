@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 9561254}
   m_Layer: 0
   m_Name: Soldier_urban_A
-  m_TagString: Untagged
+  m_TagString: Normal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
