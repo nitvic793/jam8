@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public enum UnitStates
 {
+    MOVE,
     GO_TO_NEXT_BASE,
     GUARD,
     ATTACK,
@@ -18,7 +19,8 @@ public class UnitBehavior : MonoBehaviour
     NavMeshAgent navMesh;
 
     public GameObject muzzleFlash;
-    public float baseDistanceOffset = 15F;
+    float baseDistanceOffset = 15F;
+    float relaxDistance = 1.5f;
     public float guardDistanceOffset = 3F;
     public float Health = 100F;
     public float attackVisionDistance = 20F;
@@ -33,6 +35,7 @@ public class UnitBehavior : MonoBehaviour
     public UnitStates CurrentState;
     UnitStates PreviousState;
 
+    public bool isSelected = false;
     bool isIdle = true;
     bool isAttacking = false;
     bool isRunning = false;
@@ -42,11 +45,14 @@ public class UnitBehavior : MonoBehaviour
     float attackCycleTime = 0F;
     float deathDelay = 0F;
 
+    public Vector3 targetPos;
+
     void Start()
     {
         animator = GetComponent<Animator>();
         navMesh = GetComponent<NavMeshAgent>();
         CurrentState = PreviousState = UnitStates.GO_TO_NEXT_BASE;
+        targetPos = Vector3.zero;
     }
 
     void Update()
@@ -55,9 +61,25 @@ public class UnitBehavior : MonoBehaviour
         UpdateLogic();
         switch (CurrentState)
         {
+            case UnitStates.MOVE:
+                var isEnemyClose = AttackEnemyIfClose();
+                if (Vector3.Distance(transform.position, targetPos) > relaxDistance && !isEnemyClose)
+                {
+                    isMoving = true;
+                    GotoDestination(targetPos);
+                }
+                else
+                {
+                    isMoving = false;
+                    if (!isEnemyClose)
+                    {
+                        bases[currentBase].isCurrentBase = true;
+                    }
+                }
+                break;
             case UnitStates.GO_TO_NEXT_BASE:
                 var nextBasePos = GetNextBasePosition();
-                var isEnemyClose = AttackEnemyIfClose();
+                isEnemyClose = AttackEnemyIfClose();
                 if (Vector3.Distance(transform.position, nextBasePos) > baseDistanceOffset && !isEnemyClose)
                 {
                     isMoving = true;
@@ -127,6 +149,10 @@ public class UnitBehavior : MonoBehaviour
             isDead = true;
             CurrentState = UnitStates.DIE;
         }
+        if(!isSelected)
+        {
+            transform.Find("SelectionCirclePrefab").gameObject.SetActive(false);
+        }
     }
 
     public void InflictDamage(float amount)
@@ -143,6 +169,10 @@ public class UnitBehavior : MonoBehaviour
         isDead = false;
         switch (CurrentState)
         {
+            case UnitStates.MOVE:
+                isRunning = isMoving;
+                isIdle = !isMoving;
+                break;
             case UnitStates.GO_TO_NEXT_BASE:
                 isRunning = isMoving;
                 isIdle = !isMoving;
@@ -214,4 +244,6 @@ public class UnitBehavior : MonoBehaviour
         navMesh.isStopped = false;
         navMesh.destination = position;
     }
+
+   
 }

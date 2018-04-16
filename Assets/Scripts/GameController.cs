@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
+        MoveSoilder();
         if (Input.GetMouseButtonDown(2)) 
         {
             RaycastHit hit;
@@ -44,5 +45,27 @@ public class GameController : MonoBehaviour
                 return unit;
         }
         return null;
+    }
+
+    void MoveSoilder()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit) && hit.transform.tag != "Soldier")
+            {
+                foreach (var soldier in GameObject.FindGameObjectsWithTag("Soldier"))
+                {
+                    if (soldier.GetComponent<UnitBehavior>().isSelected)
+                    {
+                        //Move to target location
+                        soldier.GetComponent<UnitBehavior>().CurrentState = UnitStates.MOVE;
+                        soldier.GetComponent<UnitBehavior>().targetPos = hit.point;
+                        //Deselect
+                        soldier.GetComponent<UnitBehavior>().isSelected = false;
+                    }
+                }
+            }
+        }
     }
 }
