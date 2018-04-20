@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BaseController : MonoBehaviour
 {
+    ResetResources resourceManager;
 
     public List<Transform> spawnPoints;
     public GameObject monsterPrefab;
@@ -13,13 +14,14 @@ public class BaseController : MonoBehaviour
     public int spawnCount = 5;
     public bool isCurrentBase = false;
 
+
     float currentTime = 0F;
     int currentWave = 0;
 
     // Use this for initialization
     void Start()
     {
-
+        resourceManager = GameObject.Find("Canvas").GetComponent<ResetResources>();
     }
 
     // Update is called once per frame
@@ -41,6 +43,16 @@ public class BaseController : MonoBehaviour
 
             currentTime += Time.deltaTime;
         }       
+    }
+
+    public void setAsCurrentBase()
+    {
+        if (isCurrentBase == false)
+        {
+            resourceManager.ResetResourceCount();
+            resourceManager.AddSoldier(transform.position, transform.rotation);
+        }
+        isCurrentBase = true;
     }
 
     void SpawnMonsters()
