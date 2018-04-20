@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1677,6 +1677,7 @@ GameObject:
   - component: {fileID: 965938748}
   - component: {fileID: 965938747}
   - component: {fileID: 965938751}
+  - component: {fileID: 965938752}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1776,6 +1777,19 @@ MonoBehaviour:
   wallPrefab: {fileID: 1787868899693052, guid: a6777ea153d499649b1526886b719613, type: 2}
   towerPrefab: {fileID: 1710237135886366, guid: 7a219c208f1460b439d71a52c153928d,
     type: 2}
+--- !u!114 &965938752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 965938746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bebeba75b9a842b46ae0592685ca6de4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceCount: 0
+  Soldier: {fileID: 1191231799651292, guid: d222e31bd758a5b428bdbb973ba6fdb7, type: 2}
 --- !u!4 &1008593161 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4200217892245686, guid: 4d7fd51c825913f40a1b91be2d83fb9a,

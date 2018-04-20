@@ -71,10 +71,6 @@ public class UnitBehavior : MonoBehaviour
                 else
                 {
                     isMoving = false;
-                    if (!isEnemyClose)
-                    {
-                        bases[currentBase].isCurrentBase = true;
-                    }
                 }
                 break;
             case UnitStates.GO_TO_NEXT_BASE:
@@ -90,7 +86,7 @@ public class UnitBehavior : MonoBehaviour
                     isMoving = false;
                     if(!isEnemyClose)
                     {
-                        bases[currentBase].isCurrentBase = true;
+                        bases[currentBase].setAsCurrentBase();
                     }
                 }
                 break;
