@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Normal
   - Soldier
+  - Builder
   layers:
   - Default
   - TransparentFX

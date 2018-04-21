@@ -2,36 +2,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerController : MonoBehaviour {
+public class TowerController : MonoBehaviour
+{
 
     public float attackVisionDistance = 20F;
     public float attackPoints = 20F;
     float attackTime = 0F;
     float attackPeriod = 0.5F;
     public GameObject muzzleFlash;
+    public Tower tower;
 
     // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        if(attackTime>attackPeriod)
-        {
-            attackTime = 0F;
-            var enemy = GetClosestEnemy();
-            if(enemy!=null)
-            {
-                var pos = transform.position + transform.forward * 8;
-                var flash = Instantiate(muzzleFlash, pos, Quaternion.LookRotation(transform.forward));
-                flash.transform.localScale = new Vector3(10, 10, 10);
-                enemy.InflictDamage(attackPoints);//Attack
-            }
-        }
+    void Start()
+    {
+        tower = GetComponent<Tower>();
+    }
 
-        attackTime += Time.deltaTime;
-	}
+    // Update is called once per frame
+    void Update()
+    {
+        if (tower.IsReady)
+        {
+            if (attackTime > attackPeriod)
+            {
+                attackTime = 0F;
+                var enemy = GetClosestEnemy();
+                if (enemy != null)
+                {
+                    var pos = transform.position + transform.forward * 8;
+                    var flash = Instantiate(muzzleFlash, pos, Quaternion.LookRotation(transform.forward));
+                    flash.transform.localScale = new Vector3(10, 10, 10);
+                    enemy.InflictDamage(attackPoints);//Attack
+                }
+            }
+
+            attackTime += Time.deltaTime;
+        }
+    }
 
     EnemyBehavior GetClosestEnemy()
     {

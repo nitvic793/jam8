@@ -26,17 +26,23 @@ public class UnitSelection : MonoBehaviour
 				selectableObject.GetComponent<UnitBehavior>().isSelected = false;
 				selectableObject.GetComponent<Transform>().Find("SelectionCirclePrefab").gameObject.SetActive(false);
             }
-			selectedObjects.Clear();
+
+            foreach (var selectableObject in GameObject.FindGameObjectsWithTag("Builder"))
+            {
+                selectableObject.GetComponent<BuilderBehavior>().isSelected = false;
+                selectableObject.GetComponent<Transform>().Find("SelectionCirclePrefab").gameObject.SetActive(false);
+            }
+            selectedObjects.Clear();
 			
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
             {
-                if (hit.transform.tag == "Soldier")
+                if (hit.transform.tag == "Soldier" || hit.transform.tag == "Builder")
                 {
                     GameObject selectedSoldier = hit.transform.gameObject;
                     selectedObjects.Add(hit.transform.gameObject);
                     Debug.Log("Test");
                     hit.transform.Find("SelectionCirclePrefab").gameObject.SetActive(true);
-                    selectedSoldier.GetComponent<UnitBehavior>().isSelected = true;
+                    selectedSoldier.GetComponent<BuilderBehavior>().isSelected = true;
                 }
                 else if (hit.transform.tag == "Building")
                 {
@@ -54,6 +60,15 @@ public class UnitSelection : MonoBehaviour
                 if (IsWithinSelectionBounds(selectableObject.gameObject))
                 {
                     selectableObject.GetComponent<UnitBehavior>().isSelected = true;
+                    selectedObjects.Add(selectableObject);
+                }
+            }
+
+            foreach (var selectableObject in GameObject.FindGameObjectsWithTag("Builder"))
+            {
+                if (IsWithinSelectionBounds(selectableObject.gameObject))
+                {
+                    selectableObject.GetComponent<BuilderBehavior>().isSelected = true;
                     selectedObjects.Add(selectableObject);
                 }
             }
@@ -80,6 +95,18 @@ public class UnitSelection : MonoBehaviour
                     if (!selectableObject.GetComponent<UnitBehavior>().isSelected)
                     {
                         selectableObject.GetComponent<UnitBehavior>().isSelected = true;
+                        selectableObject.GetComponent<Transform>().Find("SelectionCirclePrefab").gameObject.SetActive(true);
+                    }
+                }
+            }
+
+            foreach (var selectableObject in GameObject.FindGameObjectsWithTag("Builder"))
+            {
+                if (IsWithinSelectionBounds(selectableObject.gameObject))
+                {
+                    if (!selectableObject.GetComponent<BuilderBehavior>().isSelected)
+                    {
+                        selectableObject.GetComponent<BuilderBehavior>().isSelected = true;
                         selectableObject.GetComponent<Transform>().Find("SelectionCirclePrefab").gameObject.SetActive(true);
                     }
                 }
