@@ -1178,11 +1178,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114794850078349764, guid: 7a219c208f1460b439d71a52c153928d,
-        type: 2}
-      propertyPath: muzzleFlash
-      value: 
-      objectReference: {fileID: 100000, guid: 03a4a1935a9f4454c861dfa0aa6df562, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a219c208f1460b439d71a52c153928d, type: 2}
   m_IsPrefabParent: 0
