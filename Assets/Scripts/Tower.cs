@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class Tower : MonoBehaviour {
 
     public float delay = 5f;
+    public float currentTime = 0F;
     public bool IsReady { get; private set; }
     public GameObject fillBarPrefab;
     //FillBar fillBar;
@@ -40,9 +41,11 @@ public class Tower : MonoBehaviour {
     {
         for(float i = 0f; i < delay; i += Time.deltaTime)
         {
+            currentTime = i;
             //fillBar.SetScale(i / delay);
             yield return 0;
         }
+        currentTime = delay;
         IsReady = true;
         navMeshObstacle.enabled = true;
     }

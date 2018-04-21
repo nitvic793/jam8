@@ -62,6 +62,7 @@ public class GameController : MonoBehaviour
                             builder.GetComponent<BuilderBehavior>().CurrentState = BuilderStates.BUILD;
                             builder.GetComponent<BuilderBehavior>().targetPos = hit.point;
                             builder.GetComponent<BuilderBehavior>().buildPosition = hit.point;
+                            builder.GetComponent<BuilderBehavior>().currentBuildInstance = null;
                             builder.GetComponent<BuilderBehavior>().buildRotation = Quaternion.Euler(rotation);
                             //Deselect
                             builder.GetComponent<BuilderBehavior>().isSelected = false;
@@ -94,6 +95,7 @@ public class GameController : MonoBehaviour
                             builder.GetComponent<BuilderBehavior>().ToBuild = BuildingType.TOWER;
                             builder.GetComponent<BuilderBehavior>().CurrentState = BuilderStates.BUILD;
                             builder.GetComponent<BuilderBehavior>().targetPos = hit.point;
+                            builder.GetComponent<BuilderBehavior>().currentBuildInstance = null;
                             builder.GetComponent<BuilderBehavior>().buildPosition = hit.point;
                             builder.GetComponent<BuilderBehavior>().buildRotation = Quaternion.Euler(rotation);
                             //Deselect
@@ -147,7 +149,7 @@ public class GameController : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             RaycastHit hit;
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1000F) && hit.transform.tag != "Builder")
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit) && hit.transform.tag != "Builder")
             {
                 foreach (var builder in GameObject.FindGameObjectsWithTag("Builder"))
                 {

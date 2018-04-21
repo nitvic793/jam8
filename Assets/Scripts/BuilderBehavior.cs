@@ -69,7 +69,7 @@ public class BuilderBehavior : MonoBehaviour
         switch (CurrentState)
         {
             case BuilderStates.MOVE:
-                var isEnemyClose = AttackEnemyIfClose();
+                var isEnemyClose = IsEnemyClose();
                 if (Vector3.Distance(transform.position, targetPos) > relaxDistance && !isEnemyClose)
                 {
                     isMoving = true;
@@ -82,7 +82,7 @@ public class BuilderBehavior : MonoBehaviour
                 }
                 break;
             case BuilderStates.BUILD:
-                isEnemyClose = AttackEnemyIfClose();
+                isEnemyClose = IsEnemyClose();
                 isBuilding = false;
                 if (Vector3.Distance(transform.position, targetPos) > baseDistanceOffset)
                 {
@@ -95,15 +95,18 @@ public class BuilderBehavior : MonoBehaviour
                     isMoving = false;
                 }
 
-                if(isBuilding && currentBuildInstance == null)
+                Debug.Log("Is building " + isBuilding);
+                Debug.Log(currentBuildInstance);
+                if (isBuilding && currentBuildInstance == null)
                 {
                     var buildPrefab = (ToBuild == BuildingType.WALL) ? wallPrefab : towerPrefab;
                     currentBuildInstance = Instantiate(buildPrefab, buildPosition, buildRotation);
                 }
-                else if(isBuilding && currentBuildInstance!=null)
+                else if (isBuilding && currentBuildInstance != null)
                 {
                     var tower = currentBuildInstance.GetComponent<Tower>();
-                    if(tower.IsReady)
+                    Debug.Log("Tower " + tower.IsReady);
+                    if (tower.IsReady)
                     {
                         currentBuildInstance = null;
                         isBuilding = false;
@@ -111,9 +114,11 @@ public class BuilderBehavior : MonoBehaviour
                     }
                 }
 
+                Debug.Log(currentBuildInstance);
+
                 break;
             case BuilderStates.IDLE:
-              
+
                 break;
             case BuilderStates.DIE:
                 if (deathDelay > 1F)
@@ -126,7 +131,7 @@ public class BuilderBehavior : MonoBehaviour
                 break;
         }
 
-        UpdateAnimation();
+        //UpdateAnimation();
     }
 
     void UpdateLogic()
@@ -136,7 +141,7 @@ public class BuilderBehavior : MonoBehaviour
             isDead = true;
             CurrentState = BuilderStates.DIE;
         }
-        if(!isSelected)
+        if (!isSelected)
         {
             transform.Find("SelectionCirclePrefab").gameObject.SetActive(false);
         }
@@ -198,13 +203,11 @@ public class BuilderBehavior : MonoBehaviour
         return closestEnemy;
     }
 
-    bool AttackEnemyIfClose()
+    bool IsEnemyClose()
     {
         var closestEnemy = GetClosestEnemy();
         if (closestEnemy != null)
         {
-            PreviousState = CurrentState;
-            CurrentState = BuilderStates.IDLE;
             return true;
         }
 
@@ -223,5 +226,5 @@ public class BuilderBehavior : MonoBehaviour
         navMesh.destination = position;
     }
 
-   
+
 }
