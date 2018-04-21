@@ -36,7 +36,15 @@ public class UnitSelection : MonoBehaviour
 			
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
             {
-                if (hit.transform.tag == "Soldier" || hit.transform.tag == "Builder")
+                if (hit.transform.tag == "Soldier")
+                {
+                    GameObject selectedSoldier = hit.transform.gameObject;
+                    selectedObjects.Add(hit.transform.gameObject);
+                    Debug.Log("Test");
+                    hit.transform.Find("SelectionCirclePrefab").gameObject.SetActive(true);
+                    selectedSoldier.GetComponent<UnitBehavior>().isSelected = true;
+                }
+                else if(hit.transform.tag == "Builder")
                 {
                     GameObject selectedSoldier = hit.transform.gameObject;
                     selectedObjects.Add(hit.transform.gameObject);
@@ -46,7 +54,7 @@ public class UnitSelection : MonoBehaviour
                 }
                 else if (hit.transform.tag == "Building")
                 {
-                    //Do action to buuilding here
+                    //Do action to building here
                 }
             }
         }

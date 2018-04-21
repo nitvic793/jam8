@@ -32,6 +32,7 @@ public class BuilderBehavior : MonoBehaviour
     public GameObject currentBuildInstance = null;
     public GameObject wallPrefab;
     public GameObject towerPrefab;
+    public int totalCurrentBuilders = 1;
 
     public Vector3 buildPosition;
     public Quaternion buildRotation;
@@ -101,6 +102,9 @@ public class BuilderBehavior : MonoBehaviour
                 {
                     var buildPrefab = (ToBuild == BuildingType.WALL) ? wallPrefab : towerPrefab;
                     currentBuildInstance = Instantiate(buildPrefab, buildPosition, buildRotation);
+                    var tower = currentBuildInstance.GetComponent<Tower>();
+                    tower.delay = tower.delay / totalCurrentBuilders;
+                    tower.StartBuilding();
                 }
                 else if (isBuilding && currentBuildInstance != null)
                 {

@@ -52,11 +52,15 @@ public class GameController : MonoBehaviour
                     var colliderRotation = hit.collider.transform.rotation;
                     var rotation = new Vector3(-90, 0, 90) + colliderRotation.eulerAngles;
                     rotation.x = -90;
+                    bool buildCommandSent = false;
+                    BuilderBehavior mainBuilder = null;
+                    int builders = 0;
                     foreach (var selectableObject in GameObject.FindGameObjectsWithTag("Builder"))
                     {
                         var builder = selectableObject.GetComponent<BuilderBehavior>();
-                        if(builder.isSelected)
+                        if(builder.isSelected && !buildCommandSent)
                         {
+                            mainBuilder = builder;
                             //Move to target location
                             builder.GetComponent<BuilderBehavior>().ToBuild = BuildingType.WALL;
                             builder.GetComponent<BuilderBehavior>().CurrentState = BuilderStates.BUILD;
@@ -66,7 +70,20 @@ public class GameController : MonoBehaviour
                             builder.GetComponent<BuilderBehavior>().buildRotation = Quaternion.Euler(rotation);
                             //Deselect
                             builder.GetComponent<BuilderBehavior>().isSelected = false;
+                            buildCommandSent = true;
+                            builders++;
                         }
+                        else if(builder.isSelected)
+                        {
+                            builder.GetComponent<BuilderBehavior>().CurrentState = BuilderStates.MOVE;
+                            builder.GetComponent<BuilderBehavior>().targetPos = hit.point;
+                            builders++;
+                        }
+                    }
+
+                    if(mainBuilder!=null)
+                    {
+                        mainBuilder.totalCurrentBuilders = builders;
                     }
                 
                     //Instantiate(resources.wallPrefab, hit.point, Quaternion.Euler(rotation));
@@ -86,23 +103,39 @@ public class GameController : MonoBehaviour
                     var colliderRotation = hit.collider.transform.rotation;
                     var rotation = colliderRotation.eulerAngles;
                     rotation.x = -90;
+                    bool buildCommandSent = false;
+                    BuilderBehavior mainBuilder = null;
+                    int builders = 0;
                     foreach (var selectableObject in GameObject.FindGameObjectsWithTag("Builder"))
                     {
                         var builder = selectableObject.GetComponent<BuilderBehavior>();
-                        if (builder.isSelected)
+                        if (builder.isSelected && !buildCommandSent)
                         {
+                            mainBuilder = builder;
                             //Move to target location
                             builder.GetComponent<BuilderBehavior>().ToBuild = BuildingType.TOWER;
                             builder.GetComponent<BuilderBehavior>().CurrentState = BuilderStates.BUILD;
                             builder.GetComponent<BuilderBehavior>().targetPos = hit.point;
-                            builder.GetComponent<BuilderBehavior>().currentBuildInstance = null;
                             builder.GetComponent<BuilderBehavior>().buildPosition = hit.point;
+                            builder.GetComponent<BuilderBehavior>().currentBuildInstance = null;
                             builder.GetComponent<BuilderBehavior>().buildRotation = Quaternion.Euler(rotation);
                             //Deselect
                             builder.GetComponent<BuilderBehavior>().isSelected = false;
+                            buildCommandSent = true;
+                            builders++;
+                        }
+                        else if (builder.isSelected)
+                        {
+                            builder.GetComponent<BuilderBehavior>().CurrentState = BuilderStates.MOVE;
+                            builder.GetComponent<BuilderBehavior>().targetPos = hit.point;
+                            builders++;
                         }
                     }
-                    
+
+                    if (mainBuilder != null)
+                    {
+                        mainBuilder.totalCurrentBuilders = builders;
+                    }
                     //Instantiate(resources.towerPrefab, hit.point, Quaternion.Euler(rotation));
                     resources.ToolPoints -= 10;
                     resources.ResourcePoints -= 30;

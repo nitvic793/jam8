@@ -18,7 +18,6 @@ public class Tower : MonoBehaviour {
         navMeshObstacle = GetComponent<NavMeshObstacle>();
         navMeshObstacle.enabled = false;
         IsReady = false;
-        StartCoroutine(Run());
     }
 	// Use this for initialization
 	void Start () {
@@ -28,7 +27,7 @@ public class Tower : MonoBehaviour {
 
     public void StartBuilding()
     {
-        
+        StartCoroutine(Run());
     }
 
 
