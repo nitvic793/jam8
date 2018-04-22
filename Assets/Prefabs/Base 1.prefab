@@ -144,10 +144,13 @@ MonoBehaviour:
   - {fileID: 0}
   monsterPrefab: {fileID: 1798009704536536, guid: 2e627687d7d0eb0419feb43f010f9829,
     type: 2}
+  zombiePrefab: {fileID: 1564783947126816, guid: 58a50ba4140bbe849aef0c04e6d2e6d5,
+    type: 2}
   isBaseClear: 0
   totalWaves: 2
   spawnTime: 20
   spawnCount: 5
+  spawnZombieCount: 10
   isCurrentBase: 0
 --- !u!212 &212000450750492062
 SpriteRenderer:
