@@ -18,16 +18,20 @@ public class BaseController : MonoBehaviour
     float currentTime = 0F;
     int currentWave = 0;
 
+    List<GameObject> monsters;
+    SpriteRenderer miniMapIcon;
     // Use this for initialization
     void Start()
     {
         resourceManager = GameObject.Find("Canvas").GetComponent<ResetResources>();
+        miniMapIcon = gameObject.GetComponentInChildren<SpriteRenderer>();
+        monsters = new List<GameObject>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(isCurrentBase)
+        if (isCurrentBase)
         {
             if (currentTime >= spawnTime && !isBaseClear)
             {
@@ -39,12 +43,21 @@ public class BaseController : MonoBehaviour
             if (currentWave >= totalWaves)
             {
                 isBaseClear = true;
+                foreach (var monster in monsters)
+                {
+                    if (!monster.GetComponent<EnemyBehavior>().isDead)
+                        isBaseClear = false;
+                }
             }
 
             currentTime += Time.deltaTime;
-        }       
+        }
+        if (isBaseClear)
+        {
+            miniMapIcon.color = Color.green;
+        }
     }
-
+   
     public void setAsCurrentBase()
     {
         if (isCurrentBase == false)
@@ -65,7 +78,8 @@ public class BaseController : MonoBehaviour
             var pos = spawnPoint.transform.position;
             pos.x += Random.Range(1F, 10F);
             pos.z += Random.Range(1F, 10F);
-            var monster = Instantiate(monsterPrefab, pos, spawnPoint.transform.rotation);
+            var monster = (GameObject)Instantiate(monsterPrefab, pos, spawnPoint.transform.rotation);
+            monsters.Add(monster);
         }
     }
 }

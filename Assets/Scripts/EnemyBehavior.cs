@@ -23,7 +23,7 @@ public class EnemyBehavior : MonoBehaviour
     bool isRunning = false;
     bool isAttacking = false;
     bool isIdle = true;
-    bool isDead = false;
+    public bool isDead = false;
 
     float deathDelay = 0F;
     float attackCycleTime = 0F;
