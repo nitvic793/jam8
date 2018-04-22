@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
     Resources resources;
     public int currentBase = 0;
 
+    public GameObject mouseClick;
     void Start()
     {
         resources = GameObject.Find("Canvas").GetComponent<Resources>();
@@ -184,6 +185,7 @@ public class GameController : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit) && hit.transform.tag != "Builder")
             {
+                ShowClick(hit.point);
                 foreach (var builder in GameObject.FindGameObjectsWithTag("Builder"))
                 {
                     if (builder.GetComponent<BuilderBehavior>().isSelected)
@@ -198,5 +200,10 @@ public class GameController : MonoBehaviour
 
             }
         }
+    }
+
+    void ShowClick(Vector3 pos)
+    {
+        Instantiate(mouseClick,pos,Quaternion.identity);
     }
 }
