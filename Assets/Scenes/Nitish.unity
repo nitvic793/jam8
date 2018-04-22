@@ -1969,6 +1969,11 @@ Prefab:
       propertyPath: limitY
       value: 600
       objectReference: {fileID: 0}
+    - target: {fileID: 20951584759329718, guid: fbd747225bc79a2438312b7b1948f397,
+        type: 2}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294966783
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fbd747225bc79a2438312b7b1948f397, type: 2}
   m_IsPrefabParent: 0
@@ -3636,6 +3641,7 @@ MonoBehaviour:
   - {fileID: 319346607}
   - {fileID: 123836258}
   currentBase: 0
+  mouseClick: {fileID: 0}
 --- !u!114 &2030521906
 MonoBehaviour:
   m_ObjectHideFlags: 0

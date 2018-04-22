@@ -204,6 +204,6 @@ public class GameController : MonoBehaviour
 
     void ShowClick(Vector3 pos)
     {
-        Instantiate(mouseClick,pos,Quaternion.identity);
+       // Instantiate(mouseClick,pos,Quaternion.identity);
     }
 }
