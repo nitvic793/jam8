@@ -143,11 +143,11 @@ public class EnemyBehavior : MonoBehaviour
         animator.SetBool("Idle", isIdle);
     }
 
-    UnitBehavior GetClosestUnit()
+    BaseUnit GetClosestUnit()
     {
-        var units = GameObject.FindObjectsOfType<UnitBehavior>();
+        var units = GameObject.FindObjectsOfType<BaseUnit>();
         var distance = 9000F;
-        UnitBehavior closestUnit = null;
+        BaseUnit closestUnit = null;
         foreach (var unit in units)
         {
             var currentDistance = Vector3.Distance(transform.position, unit.transform.position);
