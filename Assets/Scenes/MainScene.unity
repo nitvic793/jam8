@@ -3305,6 +3305,7 @@ MonoBehaviour:
   - {fileID: 319346607}
   - {fileID: 123836258}
   currentBase: 0
+  mouseClick: {fileID: 1128037776694920, guid: 2716e772a6bc8f1439a23358ce0d8e08, type: 2}
 --- !u!114 &2030521906
 MonoBehaviour:
   m_ObjectHideFlags: 0
