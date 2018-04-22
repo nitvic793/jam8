@@ -125,7 +125,7 @@ public class BuilderBehavior : BaseUnit
 
                 break;
             case BuilderStates.DIE:
-                if (deathDelay > 1F)
+                if (deathDelay >= 5F)
                 {
                     gameObject.SetActive(false);
                 }

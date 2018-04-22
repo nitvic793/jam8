@@ -85,7 +85,7 @@ public class EnemyBehavior : MonoBehaviour
 
                 break;
             case EnemyStates.DIE:
-                if(deathDelay>1F)
+                if(deathDelay>2F)
                 {
                     gameObject.SetActive(false);
                 }

@@ -78,7 +78,7 @@ public class BaseController : MonoBehaviour
             var pos = spawnPoint.transform.position;
             pos.x += Random.Range(1F, 10F);
             pos.z += Random.Range(1F, 10F);
-            var monster = (GameObject)Instantiate(monsterPrefab, pos, spawnPoint.transform.rotation);
+            var monster = Instantiate(monsterPrefab, pos, spawnPoint.transform.rotation);
             monsters.Add(monster);
         }
     }
