@@ -903,61 +903,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
-    - target: {fileID: 114806791948451602, guid: cddf90e42ba78254ba84805a4fe9fa19,
-        type: 2}
-      propertyPath: efxSource
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114806791948451602, guid: cddf90e42ba78254ba84805a4fe9fa19,
-        type: 2}
-      propertyPath: pingSource
-      value: 
-      objectReference: {fileID: 712767925}
-    - target: {fileID: 114806791948451602, guid: cddf90e42ba78254ba84805a4fe9fa19,
-        type: 2}
-      propertyPath: shootSource
-      value: 
-      objectReference: {fileID: 712767925}
-    - target: {fileID: 82745051169109190, guid: cddf90e42ba78254ba84805a4fe9fa19,
-        type: 2}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 268d414e00f5ac3489032fbce6a765f9, type: 3}
-    - target: {fileID: 82745051169109190, guid: cddf90e42ba78254ba84805a4fe9fa19,
-        type: 2}
-      propertyPath: m_Volume
-      value: 0.11
-      objectReference: {fileID: 0}
-    - target: {fileID: 82745051169109190, guid: cddf90e42ba78254ba84805a4fe9fa19,
-        type: 2}
-      propertyPath: m_Pitch
-      value: 1.0312525
-      objectReference: {fileID: 0}
-    - target: {fileID: 82745051169109190, guid: cddf90e42ba78254ba84805a4fe9fa19,
-        type: 2}
-      propertyPath: DopplerLevel
-      value: 4.47
-      objectReference: {fileID: 0}
-    - target: {fileID: 82745051169109190, guid: cddf90e42ba78254ba84805a4fe9fa19,
-        type: 2}
-      propertyPath: rolloffMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 82745051169109190, guid: cddf90e42ba78254ba84805a4fe9fa19,
-        type: 2}
-      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
-      value: 0.82
-      objectReference: {fileID: 0}
-    - target: {fileID: 82745051169109190, guid: cddf90e42ba78254ba84805a4fe9fa19,
-        type: 2}
-      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
-      value: 0.26666668
-      objectReference: {fileID: 0}
-    - target: {fileID: 114806791948451602, guid: cddf90e42ba78254ba84805a4fe9fa19,
-        type: 2}
-      propertyPath: rogerSource
-      value: 
-      objectReference: {fileID: 361532280}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cddf90e42ba78254ba84805a4fe9fa19, type: 2}
   m_IsPrefabParent: 0
@@ -1018,115 +963,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93f53a8299a55bc4b9d33556d5c20c69, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &361532279
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 361532281}
-  - component: {fileID: 361532280}
-  m_Layer: 0
-  m_Name: Roger Sound
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!82 &361532280
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 361532279}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 08298794297f6be49928018b16c21a54, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
---- !u!4 &361532281
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 361532279}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1937353204}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &434290631
 Prefab:
   m_ObjectHideFlags: 0
@@ -1677,11 +1513,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 706054695}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!82 &712767925 stripped
-AudioSource:
-  m_PrefabParentObject: {fileID: 82745051169109190, guid: cddf90e42ba78254ba84805a4fe9fa19,
-    type: 2}
-  m_PrefabInternal: {fileID: 316500929}
 --- !u!1001 &716282761
 Prefab:
   m_ObjectHideFlags: 0
@@ -3657,11 +3488,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4836286218707144, guid: 93f53a8299a55bc4b9d33556d5c20c69,
     type: 2}
   m_PrefabInternal: {fileID: 1886713493}
---- !u!4 &1937353204 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4166364305858364, guid: cddf90e42ba78254ba84805a4fe9fa19,
-    type: 2}
-  m_PrefabInternal: {fileID: 316500929}
 --- !u!1 &2009510273
 GameObject:
   m_ObjectHideFlags: 0
@@ -3747,11 +3573,6 @@ Prefab:
       propertyPath: bases.Array.data[2]
       value: 
       objectReference: {fileID: 123836258}
-    - target: {fileID: 114411066246716164, guid: d222e31bd758a5b428bdbb973ba6fdb7,
-        type: 2}
-      propertyPath: isAttacking
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d222e31bd758a5b428bdbb973ba6fdb7, type: 2}
   m_IsPrefabParent: 0

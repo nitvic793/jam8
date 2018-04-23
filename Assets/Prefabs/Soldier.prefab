@@ -1149,11 +1149,9 @@ MonoBehaviour:
   - {fileID: 0}
   CurrentState: 0
   isSelected: 0
-  isAttacking: 0
+  isAttacking: 1
   shoot1: {fileID: 8300000, guid: 268d414e00f5ac3489032fbce6a765f9, type: 3}
-  roger: {fileID: 8300000, guid: 08298794297f6be49928018b16c21a54, type: 3}
   targetPos: {x: 0, y: 0, z: 0}
-  interpolationPeriod: 0.1
 --- !u!119 &119290056329610596
 Projector:
   m_ObjectHideFlags: 1
