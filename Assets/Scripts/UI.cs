@@ -9,6 +9,8 @@ public class UI : MonoBehaviour {
     public GameObject towerPrefab;
     public Text resourcePointsText;
     public Text toolPointsText;
+    public Text soldiersText;
+    public Text buildersText;
     public Button moveBaseButton;
     public Button pathAButton;
     public Button pathBButton;
@@ -39,12 +41,16 @@ public class UI : MonoBehaviour {
         assignSoldiersToTowerButton.gameObject.SetActive(false);
         UpdateResourcePointsText();
         UpdateToolPointsText();
+        UpdateSoldiersText();
+        UpdateBuildersText();
     }
 
     private void OnGUI()
     {
         UpdateResourcePointsText();
         UpdateToolPointsText();
+        UpdateSoldiersText();
+        UpdateBuildersText();
     }
 
     public void UpdateResourcePointsText()
@@ -55,6 +61,16 @@ public class UI : MonoBehaviour {
     public void UpdateToolPointsText()
     {
         toolPointsText.text = Resources.sharedInstance.ToolPoints.ToString() + " Tool Points";
+    }
+
+    public void UpdateSoldiersText()
+    {
+        soldiersText.text = GameObject.FindGameObjectsWithTag("Soldier").Length + " Soldiers";
+    }
+
+    public void UpdateBuildersText()
+    {
+        buildersText.text = GameObject.FindGameObjectsWithTag("Builder").Length + " Builders";
     }
 
     public void BuildTower()
@@ -114,5 +130,6 @@ public class UI : MonoBehaviour {
     }
 	
 	void Update () {
-	}
+
+    }
 }
