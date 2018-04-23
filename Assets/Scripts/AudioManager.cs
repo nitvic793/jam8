@@ -63,7 +63,6 @@ public class AudioManager : MonoBehaviour
         //Set the pitch of the audio source to the randomly chosen pitch.
         efxSource.pitch = randomPitch;
 
-
         //Set the clip to the clip at our randomly chosen index.
         efxSource.clip = clips[randomIndex];
 

@@ -73,16 +73,10 @@ public class UnitSelection : MonoBehaviour
                 if (IsWithinSelectionBounds(selectableObject.gameObject))
                 {
                     selectableObject.GetComponent<UnitBehavior>().isSelected = true;
-                    selectedObjects.Add(selectableObject);
-                    time += Time.deltaTime;
-
-                    if (time >= interpolationPeriod)
-                    {
-                        time = time - interpolationPeriod;
-
-                        // execute block of code here
-                        AudioManager.instance.RandomizeRogerSfx(roger);
-                    }
+                    selectedObjects.Add(selectableObject);       
+                    // execute block of code here
+                    AudioManager.instance.RandomizeRogerSfx(roger);
+                    
                 }
             }
 
