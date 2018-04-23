@@ -339,7 +339,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0.82
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -388,3 +388,5 @@ MonoBehaviour:
   wobbleSource: {fileID: 0}
   lowPitchRange: 0.95
   highPitchRange: 1.05
+  volumelow: 0.11
+  volumehigh: 0.22
