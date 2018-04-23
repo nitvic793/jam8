@@ -13,7 +13,7 @@ public enum UnitStates
     IDLE
 };
 
-public class UnitBehavior : MonoBehaviour
+public class UnitBehavior : BaseUnit
 {
     Animator animator;
     NavMeshAgent navMesh;
@@ -151,7 +151,7 @@ public class UnitBehavior : MonoBehaviour
         }
     }
 
-    public void InflictDamage(float amount)
+    public override void InflictDamage(float amount)
     {
         Health -= amount;
         if (Health <= 0) Health = 0F;

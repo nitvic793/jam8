@@ -8,10 +8,13 @@ public class BaseController : MonoBehaviour
 
     public List<Transform> spawnPoints;
     public GameObject monsterPrefab;
+    public GameObject zombiePrefab;
+
     public bool isBaseClear = false;
     public int totalWaves = 2;
     public float spawnTime = 4;
     public int spawnCount = 5;
+    public int spawnZombieCount = 10;
     public bool isCurrentBase = false;
 
 
@@ -33,10 +36,11 @@ public class BaseController : MonoBehaviour
     {
         if (isCurrentBase)
         {
-            if (currentTime >= spawnTime && !isBaseClear)
+            if (currentTime >= spawnTime && !isBaseClear && currentWave < totalWaves)
             {
                 currentTime = 0F;
                 SpawnMonsters();
+                SpawnZombies();
                 currentWave++;
             }
 
@@ -46,7 +50,10 @@ public class BaseController : MonoBehaviour
                 foreach (var monster in monsters)
                 {
                     if (!monster.GetComponent<EnemyBehavior>().isDead)
+                    {
                         isBaseClear = false;
+                        break;
+                    }
                 }
             }
 
@@ -57,7 +64,7 @@ public class BaseController : MonoBehaviour
             miniMapIcon.color = Color.green;
         }
     }
-   
+
     public void setAsCurrentBase()
     {
         if (isCurrentBase == false)
@@ -78,7 +85,22 @@ public class BaseController : MonoBehaviour
             var pos = spawnPoint.transform.position;
             pos.x += Random.Range(1F, 10F);
             pos.z += Random.Range(1F, 10F);
-            var monster = (GameObject)Instantiate(monsterPrefab, pos, spawnPoint.transform.rotation);
+            var monster = Instantiate(monsterPrefab, pos, spawnPoint.transform.rotation);
+            monsters.Add(monster);
+        }
+    }
+
+    void SpawnZombies()
+    {
+        if (spawnPoints.Count == 0) return;
+        int spawnPointIndex = Random.Range(0, spawnPoints.Count);
+        var spawnPoint = spawnPoints[spawnPointIndex];
+        for (var i = 0; i < spawnZombieCount; ++i)
+        {
+            var pos = spawnPoint.transform.position;
+            pos.x += Random.Range(1F, 10F);
+            pos.z += Random.Range(1F, 10F);
+            var monster = Instantiate(zombiePrefab, pos, spawnPoint.transform.rotation);
             monsters.Add(monster);
         }
     }

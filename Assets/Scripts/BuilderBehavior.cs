@@ -17,7 +17,7 @@ public enum BuildingType
     WALL
 }
 
-public class BuilderBehavior : MonoBehaviour
+public class BuilderBehavior : BaseUnit
 {
     Animator animator;
     NavMeshAgent navMesh;
@@ -46,7 +46,7 @@ public class BuilderBehavior : MonoBehaviour
     public bool isSelected = false;
     bool isIdle = true;
     bool isBuilding = false;
-    bool isRunning = false;
+    bool isWalking = false;
     bool isDead = false;
 
 
@@ -125,7 +125,7 @@ public class BuilderBehavior : MonoBehaviour
 
                 break;
             case BuilderStates.DIE:
-                if (deathDelay > 1F)
+                if (deathDelay >= 5F)
                 {
                     gameObject.SetActive(false);
                 }
@@ -135,7 +135,7 @@ public class BuilderBehavior : MonoBehaviour
                 break;
         }
 
-        //UpdateAnimation();
+        UpdateAnimation();
     }
 
     void UpdateLogic()
@@ -151,7 +151,7 @@ public class BuilderBehavior : MonoBehaviour
         }
     }
 
-    public void InflictDamage(float amount)
+    public override void InflictDamage(float amount)
     {
         Health -= amount;
         if (Health <= 0) Health = 0F;
@@ -159,22 +159,22 @@ public class BuilderBehavior : MonoBehaviour
 
     void UpdateAnimation()
     {
-        isRunning = false;
+        isWalking = false;
         isBuilding = false;
         isIdle = false;
         isDead = false;
         switch (CurrentState)
         {
             case BuilderStates.MOVE:
-                isRunning = isMoving;
+                isWalking = isMoving;
                 isIdle = !isMoving;
                 break;
             case BuilderStates.BUILD:
-                isRunning = isMoving;
-                isIdle = !isMoving;
+                isBuilding = !isMoving;
+                isWalking = isMoving;
                 break;
             case BuilderStates.IDLE:
-                isBuilding = true;
+                isIdle = true;
                 break;
             case BuilderStates.DIE:
                 isDead = true;
@@ -184,8 +184,8 @@ public class BuilderBehavior : MonoBehaviour
                 break;
         }
 
-        animator.SetBool("Attack", isBuilding);
-        animator.SetBool("Run", isRunning);
+        animator.SetBool("Build", isBuilding);
+        animator.SetBool("Walk", isWalking);
         animator.SetBool("Die", isDead);
         animator.SetBool("Idle", isIdle);
     }
