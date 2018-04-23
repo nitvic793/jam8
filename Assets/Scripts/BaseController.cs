@@ -26,7 +26,7 @@ public class BaseController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        resourceManager = GameObject.Find("Canvas").GetComponent<ResetResources>();
+        resourceManager = GameObject.Find("HUD_OLD").GetComponent<ResetResources>();
         miniMapIcon = gameObject.GetComponentInChildren<SpriteRenderer>();
         monsters = new List<GameObject>();
     }

@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour
     public GameObject mouseClick;
     void Start()
     {
-        resources = GameObject.Find("Canvas").GetComponent<Resources>();
+        resources = GameObject.Find("HUD_OLD").GetComponent<Resources>();
     }
 
     void Update()
@@ -204,6 +204,6 @@ public class GameController : MonoBehaviour
 
     void ShowClick(Vector3 pos)
     {
-       // Instantiate(mouseClick,pos,Quaternion.identity);
+        Instantiate(mouseClick,pos,Quaternion.identity);
     }
 }

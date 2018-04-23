@@ -12,7 +12,7 @@ public class ResetResources : MonoBehaviour
 
     private void Start()
     {
-        resourceManager = GameObject.Find("Canvas").GetComponent<Resources>();
+        resourceManager = GameObject.Find("HUD_OLD").GetComponent<Resources>();
     }
 
     public void ResetResourceCount()
