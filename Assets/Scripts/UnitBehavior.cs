@@ -37,7 +37,7 @@ public class UnitBehavior : BaseUnit
 
     public bool isSelected = false;
     bool isIdle = true;
-    bool isAttacking = false;
+    public bool isAttacking = false;
     bool isRunning = false;
     bool isDead = false;
 
@@ -45,8 +45,13 @@ public class UnitBehavior : BaseUnit
     float attackCycleTime = 0F;
     float deathDelay = 0F;
 
+    public AudioClip shoot1;
+
+    
+
     public Vector3 targetPos;
 
+    
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -65,6 +70,7 @@ public class UnitBehavior : BaseUnit
                 var isEnemyClose = AttackEnemyIfClose();
                 if (Vector3.Distance(transform.position, targetPos) > relaxDistance && !isEnemyClose)
                 {
+                 
                     isMoving = true;
                     GotoDestination(targetPos);
                 }
@@ -76,6 +82,7 @@ public class UnitBehavior : BaseUnit
             case UnitStates.GO_TO_NEXT_BASE:
                 var nextBasePos = GetNextBasePosition();
                 isEnemyClose = AttackEnemyIfClose();
+               
                 if (Vector3.Distance(transform.position, nextBasePos) > baseDistanceOffset && !isEnemyClose)
                 {
                     isMoving = true;
@@ -104,7 +111,12 @@ public class UnitBehavior : BaseUnit
                 }
                 break;
             case UnitStates.ATTACK:
-                attackCycleTime += Time.deltaTime;
+
+
+                // execute block of code here
+                AudioManager.instance.RandomizeShootSfx(shoot1);
+
+
                 var enemy = GetClosestEnemy();
                 if (enemy == null)
                 {

@@ -11,6 +11,11 @@ public class UnitSelection : MonoBehaviour
     // Maintain a list of all selected objects
     private List<GameObject> selectedObjects = new List<GameObject>();
 
+    private float time = 0.0f;
+    public float interpolationPeriod = 2f;
+
+    public AudioClip roger;
+
     void Update()
     {
         // If we press the left mouse button, begin selection and remember the location of the mouse
@@ -69,6 +74,15 @@ public class UnitSelection : MonoBehaviour
                 {
                     selectableObject.GetComponent<UnitBehavior>().isSelected = true;
                     selectedObjects.Add(selectableObject);
+                    time += Time.deltaTime;
+
+                    if (time >= interpolationPeriod)
+                    {
+                        time = time - interpolationPeriod;
+
+                        // execute block of code here
+                        AudioManager.instance.RandomizeRogerSfx(roger);
+                    }
                 }
             }
 
