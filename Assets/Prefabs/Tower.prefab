@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 224952113031254500}
   - component: {fileID: 222391402119187698}
   - component: {fileID: 114078328558901650}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 223836510527707138}
   - component: {fileID: 114404364847872622}
   - component: {fileID: 114215748575480156}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ProgressCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 224969750514141102}
   - component: {fileID: 222956869926842302}
   - component: {fileID: 114579242262748838}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ GameObject:
   - component: {fileID: 208637211043016254}
   - component: {fileID: 114794850078349764}
   - component: {fileID: 114048613982590302}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1710237135886366}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 56.24, y: 0.15000306, z: 75.87}
+  m_LocalPosition: {x: 256.9632, y: 0.0000015675868, z: 84.17}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 224195296041268856}
@@ -112,8 +112,8 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7babb15a0d27e4348a084bff40ad4706, type: 2}
-  - {fileID: 2100000, guid: de430443e6642a54a8a7706118bac4de, type: 2}
+  - {fileID: 2100000, guid: 9b2f7a9877042784da6f113d45cd70e6, type: 2}
+  - {fileID: 2100000, guid: 9b2f7a9877042784da6f113d45cd70e6, type: 2}
   - {fileID: 2100000, guid: df4b977bfd1cf0d4d8d1cdf38dea0f7b, type: 2}
   - {fileID: 2100000, guid: 36a65869d1166934ba19b7ef5379c865, type: 2}
   - {fileID: 2100000, guid: 229c0aafe025bfc459086fa0e1971c4d, type: 2}

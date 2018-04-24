@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 224802325307207978}
   - component: {fileID: 222613460641660356}
   - component: {fileID: 114181069248502208}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 223074661688135296}
   - component: {fileID: 114393211273863844}
   - component: {fileID: 114214401785430738}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ProgressCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 224710728320308080}
   - component: {fileID: 222998441318345258}
   - component: {fileID: 114607387851707610}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 65065455406883920}
   - component: {fileID: 208725348031605976}
   - component: {fileID: 114392488662064738}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1787868899693052}
   m_LocalRotation: {x: -0.67631197, y: -0.20640278, z: -0.20640269, w: 0.676312}
-  m_LocalPosition: {x: 37.223373, y: 0.0000019073486, z: 88.22266}
+  m_LocalPosition: {x: 257.93005, y: 0, z: 82.15}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 224256761682814724}
@@ -111,8 +111,8 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7babb15a0d27e4348a084bff40ad4706, type: 2}
-  - {fileID: 2100000, guid: de430443e6642a54a8a7706118bac4de, type: 2}
+  - {fileID: 2100000, guid: a0c6c4757d70d784b9a1cb379ed3b317, type: 2}
+  - {fileID: 2100000, guid: 9b2f7a9877042784da6f113d45cd70e6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
