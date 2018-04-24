@@ -70,8 +70,8 @@ public class BuilderBehavior : BaseUnit
         switch (CurrentState)
         {
             case BuilderStates.MOVE:
-                var isEnemyClose = IsEnemyClose();
-                if (Vector3.Distance(transform.position, targetPos) > relaxDistance && !isEnemyClose)
+               // var isEnemyClose = IsEnemyClose();
+                if (Vector3.Distance(transform.position, targetPos) > relaxDistance)
                 {
                     isMoving = true;
                     GotoDestination(targetPos);
@@ -83,7 +83,7 @@ public class BuilderBehavior : BaseUnit
                 }
                 break;
             case BuilderStates.BUILD:
-                isEnemyClose = IsEnemyClose();
+               // isEnemyClose = IsEnemyClose();
                 isBuilding = false;
                 if (Vector3.Distance(transform.position, targetPos) > baseDistanceOffset)
                 {

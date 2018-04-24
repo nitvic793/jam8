@@ -67,12 +67,18 @@ public class UI : MonoBehaviour {
         }
 
         //if all bases are clear, win
+        bool hasWon = true;
         foreach(GameObject g in bases)
         {
             if(g.GetComponent<BaseController>().isBaseClear == false)
             {
+                hasWon = false;
                 break;
             }
+        }
+
+        if(hasWon)
+        {
             WinGame();
             gameEnded = true;
         }

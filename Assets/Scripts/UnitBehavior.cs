@@ -122,6 +122,7 @@ public class UnitBehavior : BaseUnit
                 }
 
                 transform.LookAt(enemy.transform);
+                attackCycleTime += Time.deltaTime;
                 if (attackCycleTime > 0.8F)
                 {
                     attackCycleTime = 0F;
