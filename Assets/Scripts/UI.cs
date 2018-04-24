@@ -106,12 +106,19 @@ public class UI : MonoBehaviour {
     public void LoseGame()
     {
         loseScreen.gameObject.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     public void ReturnToMainMenu()
     {
         SceneManager.LoadScene("Menu");
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
 
     public void BuildTower()
     {
