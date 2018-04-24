@@ -47,8 +47,6 @@ public class UnitBehavior : BaseUnit
 
     public AudioClip shoot1;
 
-    
-
     public Vector3 targetPos;
 
     
