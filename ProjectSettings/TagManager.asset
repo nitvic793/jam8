@@ -8,6 +8,7 @@ TagManager:
   - Normal
   - Soldier
   - Builder
+  - Base
   layers:
   - Default
   - TransparentFX

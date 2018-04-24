@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour {
 
@@ -16,6 +17,10 @@ public class UI : MonoBehaviour {
     public Button pathBButton;
     public Button guardSpotButton;
     public Button assignSoldiersToTowerButton;
+    public Image winScreen;
+    public Image loseScreen;
+    private bool gameEnded; //has player won or lost
+    private GameObject[] bases; //bases to check if player has won yet
 
     bool pathButtonsActive;
 
@@ -43,6 +48,8 @@ public class UI : MonoBehaviour {
         UpdateToolPointsText();
         UpdateSoldiersText();
         UpdateBuildersText();
+        gameEnded = false; //has player won or lost yet?
+        bases = GameObject.FindGameObjectsWithTag("Base");
     }
 
     private void OnGUI()
@@ -51,6 +58,24 @@ public class UI : MonoBehaviour {
         UpdateToolPointsText();
         UpdateSoldiersText();
         UpdateBuildersText();
+
+        //if out of soldiers and builders, lose
+        if((GameObject.FindGameObjectsWithTag("Soldier").Length <= 0 || GameObject.FindGameObjectsWithTag("Builder").Length <= 0) && gameEnded == false)
+        {
+            LoseGame();
+            gameEnded = true;
+        }
+
+        //if all bases are clear, win
+        foreach(GameObject g in bases)
+        {
+            if(g.GetComponent<BaseController>().isBaseClear == false)
+            {
+                break;
+            }
+            WinGame();
+            gameEnded = true;
+        }
     }
 
     public void UpdateResourcePointsText()
@@ -71,6 +96,21 @@ public class UI : MonoBehaviour {
     public void UpdateBuildersText()
     {
         buildersText.text = GameObject.FindGameObjectsWithTag("Builder").Length + " Builders";
+    }
+
+    public void WinGame()
+    {
+        winScreen.gameObject.SetActive(true);
+    }
+
+    public void LoseGame()
+    {
+        loseScreen.gameObject.SetActive(true);
+    }
+
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 
     public void BuildTower()

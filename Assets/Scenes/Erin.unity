@@ -1401,6 +1401,18 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1494585307433602, guid: fbeacde52eff0744583fca6e9ef0a178, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1502453823520402, guid: fbeacde52eff0744583fca6e9ef0a178, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1649981653096618, guid: fbeacde52eff0744583fca6e9ef0a178, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fbeacde52eff0744583fca6e9ef0a178, type: 2}
   m_IsPrefabParent: 0
@@ -2186,6 +2198,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1609069368037952, guid: 6c7399ff6c6e87c458e15c61089b1f97, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6c7399ff6c6e87c458e15c61089b1f97, type: 2}
   m_IsPrefabParent: 0
@@ -2348,8 +2364,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d280315fd104ef4dbd93816beaa5a96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedObjects: []
   interpolationPeriod: 2
-  roger: {fileID: 0}
+  roger:
+  - {fileID: 0}
 --- !u!114 &1131395682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3642,7 +3660,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2142620273}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MiniMap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
