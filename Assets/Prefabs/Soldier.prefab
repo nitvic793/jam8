@@ -1150,7 +1150,7 @@ MonoBehaviour:
   CurrentState: 0
   isSelected: 0
   isAttacking: 1
-  shoot1: {fileID: 8300000, guid: 268d414e00f5ac3489032fbce6a765f9, type: 3}
+  shoot1: {fileID: 8300000, guid: 947919ba7c0d200419314317e3cd34e3, type: 3}
   targetPos: {x: 0, y: 0, z: 0}
 --- !u!119 &119290056329610596
 Projector:

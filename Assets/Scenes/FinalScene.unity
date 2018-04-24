@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -902,6 +902,11 @@ Prefab:
     - target: {fileID: 4166364305858364, guid: cddf90e42ba78254ba84805a4fe9fa19, type: 2}
       propertyPath: m_RootOrder
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 82745051169109190, guid: cddf90e42ba78254ba84805a4fe9fa19,
+        type: 2}
+      propertyPath: Loop
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cddf90e42ba78254ba84805a4fe9fa19, type: 2}
@@ -2077,6 +2082,11 @@ Prefab:
       propertyPath: m_BackGroundColor.b
       value: 0.08088237
       objectReference: {fileID: 0}
+    - target: {fileID: 81214360231068166, guid: fbd747225bc79a2438312b7b1948f397,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fbd747225bc79a2438312b7b1948f397, type: 2}
   m_IsPrefabParent: 0
@@ -2373,8 +2383,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d280315fd104ef4dbd93816beaa5a96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedObjects: []
   interpolationPeriod: 2
-  roger: {fileID: 8300000, guid: 08298794297f6be49928018b16c21a54, type: 3}
+  roger:
+  - {fileID: 8300000, guid: 0aa37673372af3e4982cfd7776240dd4, type: 3}
+  - {fileID: 8300000, guid: 08298794297f6be49928018b16c21a54, type: 3}
+  - {fileID: 8300000, guid: 85b4475bac504384683fd8e42cf5bd0d, type: 3}
+  - {fileID: 8300000, guid: c6d785e75aa64cb46bc5c943e5cab37b, type: 3}
 --- !u!114 &1131395682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3221,6 +3236,11 @@ Prefab:
       propertyPath: spawnPoints.Array.data[1]
       value: 
       objectReference: {fileID: 106049092}
+    - target: {fileID: 114292948910086110, guid: 0769257f9893aed40904a518bd1b9a0a,
+        type: 2}
+      propertyPath: spawnTime
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0769257f9893aed40904a518bd1b9a0a, type: 2}
   m_IsPrefabParent: 0

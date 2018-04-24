@@ -111,12 +111,9 @@ public class UnitBehavior : BaseUnit
                 }
                 break;
             case UnitStates.ATTACK:
-
-
                 // execute block of code here
                 AudioManager.instance.RandomizeShootSfx(shoot1);
-
-
+                //GetComponent<AudioSource>().Play();
                 var enemy = GetClosestEnemy();
                 if (enemy == null)
                 {
@@ -131,7 +128,7 @@ public class UnitBehavior : BaseUnit
                     var pos = transform.position;
                     pos.y += 2;
                     pos = pos + transform.forward * 1;
-                    
+               
                     var flash = Instantiate(muzzleFlash, pos, Quaternion.LookRotation(transform.forward));
                     enemy.InflictDamage(attackPoints);//Attack
                 }

@@ -92,7 +92,8 @@ public class AudioManager : MonoBehaviour
 
         int randomIndex = Random.Range(0, clips.Length);
         shootSource.clip = clips[randomIndex];
-        shootSource.PlayOneShot(shootSource.clip);
+        if(!shootSource.isPlaying)
+            shootSource.PlayOneShot(shootSource.clip);
     }
     public void RandomizeWobbleSfx(params AudioClip[] clips)
     {

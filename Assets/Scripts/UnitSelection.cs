@@ -9,15 +9,37 @@ public class UnitSelection : MonoBehaviour
     Vector3 mousePositionBegin;
 
     // Maintain a list of all selected objects
-    private List<GameObject> selectedObjects = new List<GameObject>();
+    public List<GameObject> selectedObjects = new List<GameObject>();
 
     private float time = 0.0f;
     public float interpolationPeriod = 2f;
 
-    public AudioClip roger;
-
+    public List<AudioClip> roger;
+    private void Start()
+    {
+        
+    }
     void Update()
     {
+           
+
+        if (selectedObjects.Count != 0 && Input.GetMouseButton(1))
+        {
+            foreach (var selectableObject in GameObject.FindGameObjectsWithTag("Soldier"))
+            {
+                selectableObject.GetComponent<UnitBehavior>().isSelected = false;
+                selectableObject.GetComponent<Transform>().Find("SelectionCirclePrefab").gameObject.SetActive(false);
+            }
+
+            foreach (var selectableObject in GameObject.FindGameObjectsWithTag("Builder"))
+            {
+                selectableObject.GetComponent<BuilderBehavior>().isSelected = false;
+                selectableObject.GetComponent<Transform>().Find("SelectionCirclePrefab").gameObject.SetActive(false);
+            }
+            selectedObjects.Clear();
+            // execute block of code here
+            AudioManager.instance.RandomizeRogerSfx(roger.ToArray());
+        }
         // If we press the left mouse button, begin selection and remember the location of the mouse
         if (Input.GetMouseButtonDown(0))
         {
@@ -75,7 +97,7 @@ public class UnitSelection : MonoBehaviour
                     selectableObject.GetComponent<UnitBehavior>().isSelected = true;
                     selectedObjects.Add(selectableObject);       
                     // execute block of code here
-                    AudioManager.instance.RandomizeRogerSfx(roger);
+                    //AudioManager.instance.RandomizeRogerSfx(roger);
                     
                 }
             }
