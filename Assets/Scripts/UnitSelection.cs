@@ -25,18 +25,12 @@ public class UnitSelection : MonoBehaviour
 
         if (selectedObjects.Count != 0 && Input.GetMouseButton(1))
         {
-            foreach (var selectableObject in GameObject.FindGameObjectsWithTag("Soldier"))
-            {
-                selectableObject.GetComponent<UnitBehavior>().isSelected = false;
-                selectableObject.GetComponent<Transform>().Find("SelectionCirclePrefab").gameObject.SetActive(false);
-            }
-
-            foreach (var selectableObject in GameObject.FindGameObjectsWithTag("Builder"))
-            {
-                selectableObject.GetComponent<BuilderBehavior>().isSelected = false;
-                selectableObject.GetComponent<Transform>().Find("SelectionCirclePrefab").gameObject.SetActive(false);
-            }
-            selectedObjects.Clear();
+            //foreach (var selectableObject in GameObject.FindGameObjectsWithTag("Builder"))
+            //{
+            //    selectableObject.GetComponent<BuilderBehavior>().isSelected = false;
+            //    selectableObject.GetComponent<Transform>().Find("SelectionCirclePrefab").gameObject.SetActive(false);
+            //}
+            // selectedObjects.Clear();
             // execute block of code here
             AudioManager.instance.RandomizeRogerSfx(roger.ToArray());
         }

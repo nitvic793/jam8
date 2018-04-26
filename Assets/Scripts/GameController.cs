@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -9,12 +10,13 @@ public class GameController : MonoBehaviour
     public int currentBase = 0;
 
     public GameObject mouseClick;
+    public GameObject capture;
     void Start()
     {
         resources = GameObject.Find("HUD_OLD").GetComponent<Resources>();
         GameObject.Find("RTS_Camera").transform.position = new Vector3(19.8F, 18.91F, 119.31F);
     }
-
+    bool shown = false;
     void Update()
     {
         SendBuildCommands();
@@ -35,12 +37,20 @@ public class GameController : MonoBehaviour
             }
         }
 
-        if (bases[currentBase].isBaseClear)
+        if (bases[currentBase].isBaseClear && shown == false)
         {
-
+            capture.SetActive(true);
+            shown = true;
+            StartCoroutine(WaitTime());
         }
     }
 
+    IEnumerator WaitTime()
+    {
+        yield return new WaitForSeconds(1);
+        if(currentBase != 2)
+            capture.SetActive(false);
+    }
     void SendBuildCommands()
     {
         RaycastHit hit;
@@ -172,7 +182,7 @@ public class GameController : MonoBehaviour
                         soldier.GetComponent<UnitBehavior>().CurrentState = UnitStates.MOVE;
                         soldier.GetComponent<UnitBehavior>().targetPos = hit.point;
                         //Deselect
-                        soldier.GetComponent<UnitBehavior>().isSelected = false;
+                        //soldier.GetComponent<UnitBehavior>().isSelected = false;
                     }
                 }
             }
@@ -195,7 +205,7 @@ public class GameController : MonoBehaviour
                         builder.GetComponent<BuilderBehavior>().CurrentState = BuilderStates.MOVE;
                         builder.GetComponent<BuilderBehavior>().targetPos = hit.point;
                         //Deselect
-                        builder.GetComponent<BuilderBehavior>().isSelected = false;
+                        //builder.GetComponent<BuilderBehavior>().isSelected = false;
                     }
                 }
 

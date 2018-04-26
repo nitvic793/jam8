@@ -65,7 +65,12 @@ public class UnitBehavior : BaseUnit
         switch (CurrentState)
         {
             case UnitStates.MOVE:
-                var isEnemyClose = AttackEnemyIfClose();
+                //var isEnemyClose = AttackEnemyIfClose();
+                bool isEnemyClose = false;
+                if (!isMoving)
+                {
+                    AttackEnemyIfClose();
+                }
                 if (Vector3.Distance(transform.position, targetPos) > relaxDistance && !isEnemyClose)
                 {
                  
