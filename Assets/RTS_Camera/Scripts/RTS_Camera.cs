@@ -60,6 +60,8 @@ namespace RTS_Cam
         public bool limitMap = true;
         public float limitX = 50f; //x limit of map
         public float limitY = 50f; //z limit of map
+        public float negLimitX = -10f;
+        public float negLimitY = -10f;
 
         #endregion
 
@@ -166,6 +168,10 @@ namespace RTS_Cam
         #region Unity_Methods
 
         private void Start()
+        {
+        }
+
+        private void Awake()
         {
             m_Transform = transform;
         }
@@ -303,9 +309,9 @@ namespace RTS_Cam
             if (!limitMap)
                 return;
                 
-            m_Transform.position = new Vector3(Mathf.Clamp(m_Transform.position.x, -limitX, limitX),
+            m_Transform.position = new Vector3(Mathf.Clamp(m_Transform.position.x, negLimitX, limitX),
                 m_Transform.position.y,
-                Mathf.Clamp(m_Transform.position.z, -limitY, limitY));
+                Mathf.Clamp(m_Transform.position.z, negLimitY, limitY));
         }
 
         /// <summary>

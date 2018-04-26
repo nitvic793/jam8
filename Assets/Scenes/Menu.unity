@@ -314,7 +314,7 @@ Prefab:
     - target: {fileID: 224250129839675646, guid: c8104a63544665f46a29411665826872,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -86.60667
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224250129839675646, guid: c8104a63544665f46a29411665826872,
         type: 2}
@@ -324,7 +324,7 @@ Prefab:
     - target: {fileID: 224250129839675646, guid: c8104a63544665f46a29411665826872,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 173.21333
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224270853252978064, guid: c8104a63544665f46a29411665826872,
         type: 2}
@@ -344,7 +344,7 @@ Prefab:
     - target: {fileID: 224270853252978064, guid: c8104a63544665f46a29411665826872,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -286.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224270853252978064, guid: c8104a63544665f46a29411665826872,
         type: 2}
@@ -354,7 +354,7 @@ Prefab:
     - target: {fileID: 224270853252978064, guid: c8104a63544665f46a29411665826872,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 173.21333
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224356284173989886, guid: c8104a63544665f46a29411665826872,
         type: 2}
@@ -374,7 +374,7 @@ Prefab:
     - target: {fileID: 224356284173989886, guid: c8104a63544665f46a29411665826872,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -485.99332
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224356284173989886, guid: c8104a63544665f46a29411665826872,
         type: 2}
@@ -384,7 +384,7 @@ Prefab:
     - target: {fileID: 224356284173989886, guid: c8104a63544665f46a29411665826872,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 173.21333
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114998893911819784, guid: c8104a63544665f46a29411665826872,
         type: 2}

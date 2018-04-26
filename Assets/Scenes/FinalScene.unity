@@ -4422,15 +4422,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4262689764666020, guid: fbd747225bc79a2438312b7b1948f397, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 19.850002
+      value: 240.6
       objectReference: {fileID: 0}
     - target: {fileID: 4262689764666020, guid: fbd747225bc79a2438312b7b1948f397, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 19.37
+      value: 57.6
       objectReference: {fileID: 0}
     - target: {fileID: 4262689764666020, guid: fbd747225bc79a2438312b7b1948f397, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 119.314995
+      value: 171.1
       objectReference: {fileID: 0}
     - target: {fileID: 4262689764666020, guid: fbd747225bc79a2438312b7b1948f397, type: 2}
       propertyPath: m_LocalRotation.x
@@ -4464,17 +4464,17 @@ Prefab:
     - target: {fileID: 114433400357211282, guid: fbd747225bc79a2438312b7b1948f397,
         type: 2}
       propertyPath: lastTab
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114433400357211282, guid: fbd747225bc79a2438312b7b1948f397,
         type: 2}
       propertyPath: limitX
-      value: 600
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 114433400357211282, guid: fbd747225bc79a2438312b7b1948f397,
         type: 2}
       propertyPath: limitY
-      value: 600
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 20951584759329718, guid: fbd747225bc79a2438312b7b1948f397,
         type: 2}
@@ -4514,6 +4514,11 @@ Prefab:
     - target: {fileID: 4262689764666020, guid: fbd747225bc79a2438312b7b1948f397, type: 2}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 114433400357211282, guid: fbd747225bc79a2438312b7b1948f397,
+        type: 2}
+      propertyPath: negLimitY
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fbd747225bc79a2438312b7b1948f397, type: 2}

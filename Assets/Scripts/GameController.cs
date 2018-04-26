@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         resources = GameObject.Find("HUD_OLD").GetComponent<Resources>();
+        GameObject.Find("RTS_Camera").transform.position = new Vector3(19.8F, 18.91F, 119.31F);
     }
 
     void Update()

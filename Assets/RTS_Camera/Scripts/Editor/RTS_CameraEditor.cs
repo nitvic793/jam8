@@ -78,6 +78,8 @@ namespace RTS_Cam
             {
                 camera.limitX = EditorGUILayout.FloatField("Limit X: ", camera.limitX);
                 camera.limitY = EditorGUILayout.FloatField("Limit Y: ", camera.limitY);
+                camera.negLimitX = EditorGUILayout.FloatField("NegLimit X: ", camera.negLimitX);
+                camera.negLimitY = EditorGUILayout.FloatField("NegLimit Y: ", camera.negLimitY);
             }
 
             GUILayout.Label("Follow target", EditorStyles.boldLabel);
